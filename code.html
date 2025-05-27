@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NovaTech - Future Forward Solutions</title>
+    <meta name="description" content="Experience the next generation of tech with NovaTech. Innovative solutions designed for today's digital world.">
+    <meta name="keywords" content="tech, innovation, future, gen z, gen alpha, software, solutions">
+    <meta name="author" content="NovaTech">
+
+    <!-- Favicon (replace with your actual favicon) -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
+
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
+
+    <!-- Google Fonts (Optional - for a more custom feel) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* Custom base styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            @apply bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-200 transition-colors duration-300;
+        }
+
+        /* Smooth scroll for anchor links */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Glassmorphism helper class */
+        .glassmorphic {
+            @apply bg-white/10 backdrop-blur-lg border border-white/20 shadow-lg;
+        }
+        .dark .glassmorphic {
+            @apply bg-slate-800/30 backdrop-blur-lg border border-slate-700/50 shadow-lg;
+        }
+
+        /* Animation for elements appearing on scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom scrollbar (optional, for a more modern feel) */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            @apply bg-slate-200 dark:bg-slate-800;
+        }
+        ::-webkit-scrollbar-thumb {
+            @apply bg-sky-500 rounded-full;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            @apply bg-sky-600;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="main-header">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-sky-500">NovaTech<span class="text-pink-500">.</span></a>
+            
+            <!-- Desktop Nav -->
+            <div class="hidden md:flex space-x-6 items-center">
+                <a href="#hero" class="hover:text-sky-500 transition-colors">Home</a>
+                <a href="#features" class="hover:text-sky-500 transition-colors">Features</a>
+                <a href="#testimonials" class="hover:text-sky-500 transition-colors">Loved By Users</a>
+                <a href="#contact" class="hover:text-sky-500 transition-colors">Connect</a>
+            </div>
+
+            <!-- Theme Toggle & Mobile Menu Button -->
+            <div class="flex items-center space-x-4">
+                <button id="theme-toggle" aria-label="Toggle dark mode" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+                    <svg id="theme-icon-light" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 hidden dark:block">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-6.364-.386l1.591-1.591M3 12h2.25m.386-6.364l1.591 1.591" />
+                    </svg>
+                    <svg id="theme-icon-dark" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 block dark:hidden">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+                    </svg>
+                </button>
+                <button id="mobile-menu-button" class="md:hidden p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors" aria-label="Open menu" aria-expanded="false">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-3.75 5.25h-12.5" />
+                    </svg>
+                </button>
+            </div>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden glassmorphic rounded-b-lg mx-4">
+            <a href="#hero" class="block px-4 py-3 hover:bg-sky-500/20 transition-colors rounded-t-lg">Home</a>
+            <a href="#features" class="block px-4 py-3 hover:bg-sky-500/20 transition-colors">Features</a>
+            <a href="#testimonials" class="block px-4 py-3 hover:bg-sky-500/20 transition-colors">Loved By Users</a>
+            <a href="#contact" class="block px-4 py-3 hover:bg-sky-500/20 transition-colors rounded-b-lg">Connect</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="min-h-screen flex items-center justify-center pt-20 bg-gradient-to-br from-sky-500/10 via-transparent to-pink-500/10 dark:from-sky-900/30 dark:via-transparent dark:to-pink-900/30">
+            <div class="container mx-auto px-6 text-center">
+                <div class="reveal">
+                    <h1 class="text-5xl md:text-7xl font-extrabold mb-6">
+                        The <span class="bg-clip-text text-transparent bg-gradient-to-r from-sky-400 to-pink-500">Future</span>, Unlocked.
+                    </h1>
+                    <p class="text-lg md:text-xl text-slate-600 dark:text-slate-300 mb-10 max-w-2xl mx-auto">
+                        NovaTech delivers cutting-edge solutions for a hyper-connected generation. Experience seamless tech designed for tomorrow, today.
+                    </p>
+                    <div class="space-x-4">
+                        <a href="#features" class="bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                            Explore Features
+                        </a>
+                        <a href="#contact" class="bg-transparent hover:bg-slate-200 dark:hover:bg-slate-700 text-sky-500 dark:text-sky-400 font-semibold py-3 px-8 rounded-lg border-2 border-sky-500 dark:border-sky-400 transition-all duration-300 transform hover:scale-105">
+                            Get In Touch
+                        </a>
+                    </div>
+                </div>
+                <div class="mt-16 reveal" style="transition-delay: 0.2s;">
+                    <img src="https://placehold.co/800x400/E0F2FE/0EA5E9?text=Dynamic+Interface+Mockup&font=poppins" alt="Dynamic Interface Mockup" class="mx-auto rounded-xl shadow-2xl glassmorphic p-2">
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="py-20 bg-slate-100 dark:bg-slate-950">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16 reveal">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-4">Why <span class="text-sky-500">NovaTech</span>?</h2>
+                    <p class="text-lg text-slate-600 dark:text-slate-400 max-w-xl mx-auto">We're not just building tech; we're crafting experiences.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Feature Card 1 -->
+                    <div class="glassmorphic p-8 rounded-xl reveal">
+                        <div class="flex items-center justify-center w-16 h-16 mb-6 rounded-full bg-sky-500/20 text-sky-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-semibold mb-3">Blazing Fast</h3>
+                        <p class="text-slate-600 dark:text-slate-300">Optimized for speed, ensuring your experience is instant and responsive. No more waiting.</p>
+                    </div>
+                    <!-- Feature Card 2 -->
+                    <div class="glassmorphic p-8 rounded-xl reveal" style="transition-delay: 0.1s;">
+                        <div class="flex items-center justify-center w-16 h-16 mb-6 rounded-full bg-pink-500/20 text-pink-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-semibold mb-3">Intuitive UI/UX</h3>
+                        <p class="text-slate-600 dark:text-slate-300">Clean, modern, and easy to navigate. Designed with you in mind for a delightful interaction.</p>
+                    </div>
+                    <!-- Feature Card 3 -->
+                    <div class="glassmorphic p-8 rounded-xl reveal" style="transition-delay: 0.2s;">
+                        <div class="flex items-center justify-center w-16 h-16 mb-6 rounded-full bg-green-500/20 text-green-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-semibold mb-3">Cross-Platform</h3>
+                        <p class="text-slate-600 dark:text-slate-300">Access NovaTech seamlessly on any device – desktop, tablet, or mobile. Your world, your way.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16 reveal">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-4">Loved by <span class="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">Innovators</span></h2>
+                    <p class="text-lg text-slate-600 dark:text-slate-400 max-w-xl mx-auto">Hear what early adopters and tech enthusiasts are saying.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Testimonial Card 1 -->
+                    <div class="glassmorphic p-8 rounded-xl reveal">
+                        <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Alex Morgan" class="w-16 h-16 rounded-full mb-4 border-2 border-sky-400">
+                        <p class="text-slate-600 dark:text-slate-300 italic mb-4">"NovaTech is a game-changer! The speed and intuitive design are exactly what I've been looking for. It's like they read my mind."</p>
+                        <h4 class="font-semibold">Alex M.</h4>
+                        <p class="text-sm text-sky-500 dark:text-sky-400">Gen Z Developer</p>
+                    </div>
+                    <!-- Testimonial Card 2 -->
+                    <div class="glassmorphic p-8 rounded-xl reveal" style="transition-delay: 0.1s;">
+                        <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Jamie Lee" class="w-16 h-16 rounded-full mb-4 border-2 border-pink-400">
+                        <p class="text-slate-600 dark:text-slate-300 italic mb-4">"Finally, tech that 'gets' us. The dark mode is slick, animations are smooth, and it just *works*. Highly recommend!"</p>
+                        <h4 class="font-semibold">Jamie L.</h4>
+                        <p class="text-sm text-pink-500 dark:text-pink-400">Tech Influencer</p>
+                    </div>
+                    <!-- Testimonial Card 3 -->
+                    <div class="glassmorphic p-8 rounded-xl reveal" style="transition-delay: 0.2s;">
+                        <img src="https://randomuser.me/api/portraits/lego/7.jpg" alt="Kai Chen" class="w-16 h-16 rounded-full mb-4 border-2 border-green-400">
+                        <p class="text-slate-600 dark:text-slate-300 italic mb-4">"As a Gen Alpha kid, I expect things to be fast and cool. NovaTech delivers. It's already my go-to for [imaginary product feature]."</p>
+                        <h4 class="font-semibold">Kai C.</h4>
+                        <p class="text-sm text-green-500 dark:text-green-400">Future Tech Leader</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 bg-slate-100 dark:bg-slate-950">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16 reveal">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-4">Let's <span class="text-sky-500">Connect</span>!</h2>
+                    <p class="text-lg text-slate-600 dark:text-slate-400 max-w-xl mx-auto">Got questions, ideas, or just want to say hi? Drop us a line.</p>
+                </div>
+                <div class="max-w-2xl mx-auto glassmorphic p-8 sm:p-12 rounded-xl reveal">
+                    <form id="contact-form" class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Full Name</label>
+                            <input type="text" name="name" id="name" required
+                                   class="w-full px-4 py-3 rounded-lg bg-white/50 dark:bg-slate-800/50 border border-slate-300 dark:border-slate-600 focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-colors"
+                                   placeholder="e.g., Elon Musket">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Email Address</label>
+                            <input type="email" name="email" id="email" required
+                                   class="w-full px-4 py-3 rounded-lg bg-white/50 dark:bg-slate-800/50 border border-slate-300 dark:border-slate-600 focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-colors"
+                                   placeholder="you@example.com">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Your Message</label>
+                            <textarea name="message" id="message" rows="4" required
+                                      class="w-full px-4 py-3 rounded-lg bg-white/50 dark:bg-slate-800/50 border border-slate-300 dark:border-slate-600 focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-colors"
+                                      placeholder="What's on your mind?"></textarea>
+                        </div>
+                        <div>
+                            <button type="submit"
+                                    class="w-full bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105">
+                                Send Message
+                            </button>
+                        </div>
+                        <p id="form-status" class="text-center text-sm mt-4"></p>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-slate-200 dark:bg-slate-800/50">
+        <div class="container mx-auto px-6 text-center text-slate-600 dark:text-slate-400">
+            <p class="mb-2">&copy; <span id="current-year"></span> NovaTech. All rights reserved. Built for the future.</p>
+            <div class="flex justify-center space-x-4">
+                <a href="#" aria-label="NovaTech on Twitter" class="hover:text-sky-500 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-.422.724-.665 1.56-.665 2.452 0 1.777.903 3.284 2.271 4.192-.816-.026-1.583-.25-2.25-.616v.054c0 2.485 1.73 4.549 4.058 5.015-.423.124-.877.18-1.342.18-.325 0-.642-.033-.95-.09 0 .652.562 2.241 2.354 2.241-1.805 1.378-4.047 2.199-6.495 2.199-.425 0-.841-.024-1.254-.073 2.299 1.437 5.025 2.273 7.949 2.273 9.431 0 14.599-7.857 14.599-14.693 0-.224-.005-.447-.015-.67A10.438 10.438 0 0024 4.557z"/></svg>
+                </a>
+                <a href="#" aria-label="NovaTech on Instagram" class="hover:text-pink-500 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.059 1.689.073 4.948.073 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.441 1.441 1.441 1.441-.645 1.441-1.441c.001-.795-.644-1.44-1.441-1.44z"/></svg>
+                </a>
+                <a href="#" aria-label="NovaTech on TikTok" class="hover:text-slate-900 dark:hover:text-white transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91.02.08 0 .17.01.23.05.27.16.49.39.65.67.21.36.3.79.28 1.21l-.01.11c-.03.28-.08.55-.14.83-.09.44-.22.87-.38 1.29-.15.38-.33.75-.55 1.1-.28.46-.61.88-1.02 1.24-.22.19-.47.35-.74.48-.27.13-.56.23-.87.29-.38.07-.77.09-1.16.09-.29 0-.57-.01-.86-.04-.4-.04-.8-.1-1.19-.21-.65-.17-1.27-.47-1.82-.88-.28-.21-.53-.46-.75-.74-.41-.52-.71-1.13-.9-1.8-.07-.23-.12-.48-.15-.73-.04-.33-.04-.68-.02-1.02.01-.16.03-.32.05-.47l.02-.13c.04-.4.15-.79.33-1.15.11-.21.24-.41.4-.59.2-.23.43-.42.69-.57.23-.13.48-.22.75-.27.27-.05.55-.07.83-.07.39 0 .78.01 1.16.04.38.02.75.08 1.12.18.41.11.8.28 1.15.51.21.14.4.31.57.52.19.21.34.46.46.73l.03.08c.03.08.04.18.04.27v.04c0 .13-.02.26-.06.38-.09.35-.26.67-.5.93-.21.23-.47.41-.77.54-.31.13-.64.2-.99.21-.17 0-.34-.01-.51-.03-.29-.03-.57-.09-.84-.18s-.52-.23-.74-.4-.39-.39-.51-.63c-.11-.21-.17-.44-.18-.68v-.03c.01-.13.04-.26.09-.38.09-.2.23-.36.4-.48.18-.13.39-.22.61-.27.22-.04.45-.05.68-.05.02 0 .03 0 .05.01h.01L12.525.02zM16.83 14.16c.01.08.01.17 0 .25-.02.38-.13.75-.32 1.09-.24.44-.59.79-1.02 1.03-.41.23-.88.37-1.36.41-.46.04-.93.01-1.39-.09-.42-.09-.82-.25-1.18-.48-.34-.22-.64-.51-.88-.85-.32-.45-.54-.98-.64-1.56-.03-.18-.04-.37-.02-.55.01-.13.03-.26.07-.39.07-.25.2-.48.38-.67.22-.23.49-.41.79-.54.3-.13.63-.2.98-.21.19 0 .38.01.57.04.31.04.62.12.9.26.41.21.75.51.99.9.03.05.05.1.07.15.02.09.02.18.01.28zm-3.06 4.52c.89.01 1.76-.18 2.53-.58.59-.31 1.09-.79 1.44-1.39.21-.36.34-.76.39-1.18.04-.33.04-.68-.01-1.01-.05-.36-.16-.7-.33-1.02-.2-.37-.48-.69-.81-.94-.22-.17-.47-.3-.73-.39-.27-.1-.56-.15-.85-.17-.37-.02-.75-.01-1.12.05-.41.06-.8.2-1.14.41-.36.22-.67.5-.92.85-.36.5-.6 1.09-.7 1.75-.02.17-.03.33-.02.51.02.4.13.78.31 1.14.23.45.57.82 1 .11.43.28.92.45 1.43.52.18.02.36.03.54.03zm6.02-10.65c-.38-.02-.76-.06-1.12-.15-.39-.09-.76-.25-1.09-.49-.19-.14-.36-.3-.5-.48-.19-.24-.32-.52-.39-.82l-.02-.1c-.01-.08-.01-.17.01-.25.02-.32.1-.63.25-.91.19-.35.45-.64.78-.86.3-.19.64-.32.99-.38.38-.07.77-.08 1.15-.07.42.01.83.09 1.22.24.44.17.83.44 1.13.8.24.29.4.63.48.99.03.14.04.29.02.43-.02.28-.09.55-.21.81-.16.35-.4.65-.71.89-.23.17-.49.31-.77.4-.28.09-.58.13-.88.13zm.03 12.2c.24-.02.48-.05.71-.1l.02-.01c.47-.13.9-.35 1.26-.66.42-.36.74-.82.92-1.33.06-.18.1-.36.11-.55v-.02c0-.1-.01-.2-.03-.29-.06-.31-.2-.6-.41-.85-.2-.24-.46-.43-.75-.57s-.6-.23-.92-.27c-.2-.02-.4-.03-.6-.02-.32.01-.64.06-.93.15-.42.13-.79.35-1.09.65-.34.34-.59.76-.72 1.23-.05.16-.07.33-.07.5v.02c.01.13.03.26.07.38.1.29.28.54.51.75.24.22.52.39.82.51.28.11.58.18.89.21h.01z"/></svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Theme Toggle ---
+            const themeToggleBtn = document.getElementById('theme-toggle');
+            const themeIconLight = document.getElementById('theme-icon-light');
+            const themeIconDark = document.getElementById('theme-icon-dark');
+            const htmlElement = document.documentElement;
+
+            const applyTheme = (theme) => {
+                if (theme === 'dark') {
+                    htmlElement.classList.add('dark');
+                    themeIconLight.classList.remove('hidden');
+                    themeIconDark.classList.add('hidden');
+                } else {
+                    htmlElement.classList.remove('dark');
+                    themeIconLight.classList.add('hidden');
+                    themeIconDark.classList.remove('hidden');
+                }
+            };
+
+            // Check local storage or system preference
+            const storedTheme = localStorage.getItem('theme');
+            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+            let currentTheme = storedTheme || (systemPrefersDark ? 'dark' : 'light');
+            applyTheme(currentTheme);
+
+            themeToggleBtn.addEventListener('click', () => {
+                currentTheme = htmlElement.classList.contains('dark') ? 'light' : 'dark';
+                applyTheme(currentTheme);
+                localStorage.setItem('theme', currentTheme);
+            });
+
+            // --- Mobile Menu ---
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const navLinksMobile = mobileMenu.querySelectorAll('a');
+
+            mobileMenuButton.addEventListener('click', () => {
+                const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+                mobileMenu.classList.toggle('hidden');
+                mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
+            });
+            
+            // Close mobile menu when a link is clicked
+            navLinksMobile.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenuButton.setAttribute('aria-expanded', 'false');
+                });
+            });
+
+            // --- Sticky Header with Glassmorphism on Scroll ---
+            const header = document.getElementById('main-header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('glassmorphic', 'shadow-md', 'py-3');
+                    header.classList.remove('py-4');
+                } else {
+                    header.classList.remove('glassmorphic', 'shadow-md', 'py-3');
+                    header.classList.add('py-4');
+                }
+            });
+
+            // --- Scroll Reveal Animation ---
+            const revealElements = document.querySelectorAll('.reveal');
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        // Optional: unobserve after revealing to save resources
+                        // observer.unobserve(entry.target);
+                    }
+                    // Optional: remove 'visible' class if element scrolls out of view
+                    // else {
+                    //     entry.target.classList.remove('visible');
+                    // }
+                });
+            }, { threshold: 0.1 }); // Adjust threshold as needed (0.1 means 10% visible)
+
+            revealElements.forEach(el => {
+                revealObserver.observe(el);
+            });
+
+            // --- Contact Form Submission (Placeholder) ---
+            const contactForm = document.getElementById('contact-form');
+            const formStatus = document.getElementById('form-status');
+            if (contactForm) {
+                contactForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    formStatus.textContent = 'Sending your message... ✨';
+                    formStatus.className = 'text-center text-sm mt-4 text-sky-500';
+
+                    // Simulate API call
+                    setTimeout(() => {
+                        // For a real form, you'd use fetch() to send data to a backend.
+                        // Example:
+                        // const formData = new FormData(contactForm);
+                        // fetch('/api/contact', { method: 'POST', body: formData })
+                        //   .then(response => response.json())
+                        //   .then(data => { ... })
+                        //   .catch(error => { ... });
+
+                        formStatus.textContent = 'Message sent! We\'ll be in touch. 🚀';
+                        formStatus.className = 'text-center text-sm mt-4 text-green-500';
+                        contactForm.reset();
+                        
+                        setTimeout(() => { formStatus.textContent = ''; }, 5000);
+                    }, 2000);
+                });
+            }
+
+            // --- Update current year in footer ---
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+
+            // --- Smooth scroll for nav links (desktop) ---
+            // Already handled by `scroll-smooth` class on <html> and `scroll-behavior: smooth;` in CSS
+            // but if you need more control or it's not working in some browsers:
+            document.querySelectorAll('header nav a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                        // Update URL hash without page jump (optional, good for history)
+                        if(history.pushState) {
+                            history.pushState(null, null, targetId);
+                        } else {
+                            location.hash = targetId;
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
